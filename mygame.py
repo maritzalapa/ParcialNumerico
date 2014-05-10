@@ -25,13 +25,13 @@ screen = pygame.display.set_mode(size)
 last_fps = 0
 points = []
 count=0
-
+car = pygame.image.load('car.png')
 for i in range(5):
     point = Point(20,25,5,0)
     points.append(point)
     
 def update():
-    if count/10<5: points[count/10].started=True
+    if count/20<5: points[count/20].started=True
     for i in range(5):
         if points[i].started:
             points[i].update()
@@ -39,7 +39,8 @@ def update():
 def draw():
     for i in range(5):
         if points[i].started:
-            pygame.draw.circle(screen, points[i].color, (points[i].px,points[i].py), points[i].rad)        
+            screen.blit(car, (points[i].px,points[i].py))
+            #pygame.draw.circle(screen, points[i].color, (points[i].px,points[i].py), points[i].rad)        
             
 while 1:
     for event in pygame.event.get():
